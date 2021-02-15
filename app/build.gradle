@@ -1,0 +1,93 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+    buildFeatures{
+        dataBinding = true
+    }
+    defaultConfig {
+        applicationId "com.jydev.pagingexample"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    def paging_version = "2.1.2"
+
+    implementation "androidx.paging:paging-runtime:${versions.paging}" // For Kotlin use paging-runtime-ktx
+
+    // alternatively - without Android dependencies for testing
+    testImplementation "androidx.paging:paging-common:${versions.paging}" // For Kotlin use paging-common-ktx
+
+    // optional - RxJava support
+    implementation "androidx.paging:paging-rxjava2:${versions.paging}" // For Kotlin use paging-rxjava2-ktx
+
+    implementation "androidx.room:room-runtime:${versions.room}"
+    kapt  "androidx.room:room-compiler:${versions.room}"
+    //noinspection GradleDependency
+    implementation "androidx.room:room-ktx:${versions.room}"
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // Koin for Kotlin
+    implementation "org.koin:koin-core:${versions.koin}"
+    // Koin extended & experimental features
+    implementation "org.koin:koin-core-ext:${versions.koin}"
+    // Koin for Unit tests
+    testImplementation "org.koin:koin-test:${versions.koin}"
+    // Koin for Java developers
+    implementation "org.koin:koin-java:${versions.koin}"
+
+    // Koin for Android
+    implementation "org.koin:koin-android:${versions.koin}"
+    // Koin Android Scope features
+    implementation "org.koin:koin-android-scope:${versions.koin}"
+    // Koin Android ViewModel features
+    implementation "org.koin:koin-android-viewmodel:${versions.koin}"
+    // Koin Android Experimental features
+    implementation "org.koin:koin-android-ext:${versions.koin}"
+
+    // Koin AndroidX Scope features
+    implementation "org.koin:koin-androidx-scope:${versions.koin}"
+    // Koin AndroidX ViewModel features
+    implementation "org.koin:koin-androidx-viewmodel:${versions.koin}"
+    // Koin AndroidX Experimental features
+    implementation "org.koin:koin-androidx-ext:${versions.koin}"
+
+    // aac dependencies
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${versions.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}"
+}
